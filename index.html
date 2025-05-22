@@ -5,7 +5,9 @@
     <title>Eclass to Discord</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script defer src="main.js"></script>
+    <script defer src="form.js"></script>
+    <script defer src="generate-file.js"></script>
+</head>
 </head>
 <body>
     <header>
@@ -17,33 +19,28 @@
             <label for="university">Επιλέξτε Πανεπιστήμιο (Select University)</label>
             <select id="university" name="university" required>
                 <option value="">-- Επιλέξτε --</option>
-                <option value="https://eclass.uth.gr/">Πανεπιστήμιο Θεσσαλίας (UTH)</option>
-                <option value="https://eclass.uoa.gr/">ΕΚΠΑ (UoA)</option>
+                <option value="https://eclass.uoa.gr/">Εθνικό και Καποδιστριακό Πανεπιστήμιο Αθηνών (UoA)</option>
                 <option value="https://eclass.auth.gr/">Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης (AUTH)</option>
                 <option value="https://eclass.upatras.gr/">Πανεπιστήμιο Πατρών (UPatras)</option>
                 <option value="https://eclass.aegean.gr/">Πανεπιστήμιο Αιγαίου (Aegean)</option>
                 <option value="https://eclass.duth.gr/">Δημοκρίτειο Πανεπιστήμιο Θράκης (DUTH)</option>
                 <option value="https://eclass.ionio.gr/">Ιόνιο Πανεπιστήμιο (Ionio)</option>
-                <option value="https://eclass.uoi.gr/">Πανεπιστήμιο Ιωαννίνων (UOI)</option>
-                <option value="https://eclass.teiath.gr/">ΤΕΙ Αθήνας (TEIATH)</option>
-                <option value="https://eclass.teiwest.gr/">ΤΕΙ Δυτικής Ελλάδας (TEIWest)</option>
-                <option value="https://eclass.teilar.gr/">ΤΕΙ Θεσσαλίας (TEILar)</option>
-                <option value="https://eclass.teiep.gr/">ΤΕΙ Ηπείρου (TEIEP)</option>
-                <option value="https://eclass.teicrete.gr/">ΤΕΙ Κρήτης (TEICrete)</option>
-                <option value="https://eclass.teikal.gr/">ΤΕΙ Καλαμάτας (TEIKal)</option>
-                <option value="https://eclass.teithe.gr/">ΤΕΙ Θεσσαλονίκης (TEIThess)</option>
-                <option value="https://eclass.teiser.gr/">ΤΕΙ Σερρών (TEISer)</option>
-                <option value="https://eclass.teikoz.gr/">ΤΕΙ Δυτικής Μακεδονίας (TEIKoz)</option>
+                <option value="https://ecourse.uoi.gr/">Πανεπιστήμιο Ιωαννίνων (UOI)</option>
+                <option value="https://eclass.uth.gr/">Πανεπιστήμιο Θεσσαλίας (UTH)</option>
                 <option value="https://eclass.hua.gr/">Χαροκόπειο Πανεπιστήμιο (HUA)</option>
-                <option value="https://eclass.panteion.gr/">Πάντειο Πανεπιστήμιο (Panteion)</option>
-                <option value="https://eclass.ntua.gr/">ΕΜΠ (NTUA)</option>
-                <option value="https://eclass.ihu.gr/">Διεθνές Πανεπιστήμιο Ελλάδος (IHU)</option>
-                <option value="https://eclass.upatras.gr/">Πανεπιστήμιο Πελοποννήσου (UOP)</option>
+                <option value="https://openeclass.panteion.gr/">Πάντειο Πανεπιστήμιο (Panteion)</option>
+                <option value="https://eclass.ntua.gr/">Εθνικό Μετσόβιο Πολυτεχνείο (NTUA)</option>
+                <option value="https://eclass.ihu.gr/">Διεθνές Πανεπιστήμιο της Ελλάδος (IHU)</option>
+                <option value="https://eclass.uop.gr/">Πανεπιστήμιο Πελοποννήσου (UOP)</option>
                 <option value="https://eclass.uowm.gr/">Πανεπιστήμιο Δυτικής Μακεδονίας (UOWM)</option>
                 <option value="https://eclass.uniwa.gr/">Πανεπιστήμιο Δυτικής Αττικής (UNIWA)</option>
                 <option value="https://eclass.eap.gr/">Ελληνικό Ανοικτό Πανεπιστήμιο (EAP)</option>
                 <option value="https://eclass.aueb.gr/">Οικονομικό Πανεπιστήμιο Αθηνών (AUEB)</option>
-                <option value="https://eclass.pirate.edu.gr/">Πανεπιστήμιο Πειραιά (UNIPI)</option>
+                <option value="https://eclass.unipi.gr/">Πανεπιστήμιο Πειραιά (UNIPI)</option>
+                <option value="https://opencourses.uoc.gr/">Πανεπιστήμιο Κρήτης (UOC)</option>
+                <option value="https://eclass.tuc.gr/">Πολυτεχνείο Κρήτης (TUC)</option>
+                <option value="https://eclass.hmu.gr/">Ελληνικό Μεσογειακό Πανεπιστήμιο (HMU)</option>
+                <option value="https://eclass.asfa.gr/">Ανώτατη Σχολή Καλών Τεχνών (ASFA)</option>
                 <!-- Add more as needed -->
             </select>
 

@@ -1,62 +1,40 @@
 window.addEventListener('DOMContentLoaded', function() {
-    const universitySelect = document.getElementById('university');
-    const detailsDiv = document.getElementById('details-fields');
-    const form = document.querySelector('form');
-    const coursesList = document.getElementById('courses-list');
-    const addCourseBtn = document.getElementById('add-course');
-
-    // Map university URLs to logo URLs (from university_logos.txt)
     const universityLogos = {
-        "https://eclass.uth.gr/": "https://eclass.uth.gr/courses/theme_data/24/UTH-logo-text-greek.png",
-        "https://eclass.uoa.gr/": "https://www.uoa.gr/fileadmin/user_upload/uoa_logo_gr.svg",
+        "https://eclass.uoa.gr/": "https://www.uoa.gr/fileadmin/templates/img/logo_el.png",
         "https://eclass.auth.gr/": "https://www.auth.gr/sites/default/files/logo_0.png",
         "https://eclass.upatras.gr/": "https://www.upatras.gr/sites/all/themes/upatras/logo.png",
         "https://eclass.aegean.gr/": "https://www.aegean.gr/sites/all/themes/aegean/logo.png",
         "https://eclass.duth.gr/": "https://www.duth.gr/sites/all/themes/duth/logo.png",
         "https://eclass.ionio.gr/": "https://ionio.gr/images/ionio-logo.png",
-        "https://eclass.uoi.gr/": "https://www.uoi.gr/wp-content/themes/uoi/images/logo.png",
-        "https://eclass.teiath.gr/": "https://www.uniwa.gr/wp-content/uploads/2019/03/logo-uniwa.png",
-        "https://eclass.teiwest.gr/": "https://www.teiwest.gr/wp-content/themes/teiwest/images/logo.png",
-        "https://eclass.teilar.gr/": "https://www.teilar.gr/images/logo.png",
-        "https://eclass.teiep.gr/": "https://www.teiep.gr/images/logo.png",
-        "https://eclass.teicrete.gr/": "https://www.teicrete.gr/sites/default/files/logo.png",
-        "https://eclass.teikal.gr/": "https://www.teikal.gr/images/logo.png",
-        "https://eclass.teithe.gr/": "https://www.teithe.gr/images/logo.png",
-        "https://eclass.teiser.gr/": "https://www.teiser.gr/images/logo.png",
-        "https://eclass.teikoz.gr/": "https://www.teiwm.gr/images/logo.png",
+        "https://ecourse.uoi.gr/": "https://www.uoi.gr/wp-content/themes/uoi/images/logo.png",
+        "https://eclass.uth.gr/": "https://www.uth.gr/sites/default/files/uth_logo_gr.png",
         "https://eclass.hua.gr/": "https://www.hua.gr/images/logo.png",
-        "https://eclass.panteion.gr/": "https://www.panteion.gr/images/logo.png",
+        "https://openeclass.panteion.gr/": "https://www.panteion.gr/images/logo.png",
         "https://eclass.ntua.gr/": "https://www.ntua.gr/images/ntua_logo.png",
         "https://eclass.ihu.gr/": "https://www.ihu.gr/wp-content/uploads/2019/03/logo-ihu.png",
-        "https://eclass.upatras.gr/": "https://www.uop.gr/sites/default/files/logo.png",
+        "https://eclass.uop.gr/": "https://www.uop.gr/sites/default/files/logo.png",
         "https://eclass.uowm.gr/": "https://www.uowm.gr/wp-content/themes/uowm/images/logo.png",
         "https://eclass.uniwa.gr/": "https://www.uniwa.gr/wp-content/uploads/2019/03/logo-uniwa.png",
         "https://eclass.eap.gr/": "https://www.eap.gr/images/logo.png",
         "https://eclass.aueb.gr/": "https://www.aueb.gr/sites/all/themes/aueb/logo.png",
-        "https://eclass.pirate.edu.gr/": "https://www.unipi.gr/unipi/images/unipi_logo.png"
+        "https://eclass.unipi.gr/": "https://www.unipi.gr/unipi/images/unipi_logo.png",
+        "https://opencourses.uoc.gr/": "https://www.uoc.gr/sites/default/files/logo.png",
+        "https://eclass.tuc.gr/": "https://www.tuc.gr/fileadmin/templates/site/images/logo.png",
+        "https://eclass.hmu.gr/": "https://www.hmu.gr/sites/default/files/logo-hmu.png",
+        "https://eclass.asfa.gr/": "https://www.asfa.gr/sites/default/files/asfa_logo.png"
     };
 
-    // Map university URLs to their stenography codes
     const universityCodes = {
-        "https://eclass.uth.gr/": "uth",
         "https://eclass.uoa.gr/": "uoa",
         "https://eclass.auth.gr/": "auth",
         "https://eclass.upatras.gr/": "upatras",
         "https://eclass.aegean.gr/": "aegean",
         "https://eclass.duth.gr/": "duth",
         "https://eclass.ionio.gr/": "ionio",
-        "https://eclass.uoi.gr/": "uoi",
-        "https://eclass.teiath.gr/": "teiath",
-        "https://eclass.teiwest.gr/": "teiwest",
-        "https://eclass.teilar.gr/": "teilar",
-        "https://eclass.teiep.gr/": "teiep",
-        "https://eclass.teicrete.gr/": "teicrete",
-        "https://eclass.teikal.gr/": "teikal",
-        "https://eclass.teithe.gr/": "teithess",
-        "https://eclass.teiser.gr/": "teiser",
-        "https://eclass.teikoz.gr/": "teikoz",
+        "https://ecourse.uoi.gr/": "uoi",
+        "https://eclass.uth.gr/": "uth",
         "https://eclass.hua.gr/": "hua",
-        "https://eclass.panteion.gr/": "panteion",
+        "https://openeclass.panteion.gr/": "panteion",
         "https://eclass.ntua.gr/": "ntua",
         "https://eclass.ihu.gr/": "ihu",
         "https://eclass.uop.gr/": "uop",
@@ -64,44 +42,19 @@ window.addEventListener('DOMContentLoaded', function() {
         "https://eclass.uniwa.gr/": "uniwa",
         "https://eclass.eap.gr/": "eap",
         "https://eclass.aueb.gr/": "aueb",
-        "https://eclass.pirate.edu.gr/": "unipi"
+        "https://eclass.unipi.gr/": "unipi",
+        "https://opencourses.uoc.gr/": "uoc",
+        "https://eclass.tuc.gr/": "tuc",
+        "https://eclass.hmu.gr/": "hmu",
+        "https://eclass.asfa.gr/": "asfa"
     };
 
-    function toggleDetails() {
-        if (universitySelect.value === "") {
-            detailsDiv.style.display = "none";
-        } else {
-            detailsDiv.style.display = "block";
-        }
-    }
-
-    universitySelect.addEventListener('change', toggleDetails);
-    toggleDetails();
-
-    let courseCount = 1;
-    addCourseBtn.addEventListener('click', function() {
-        courseCount++;
-        const div = document.createElement('div');
-        div.className = 'course-entry';
-        div.innerHTML = `
-            <label for="rss-${courseCount}">eClass RSS Feed URL</label>
-            <input type="url" id="rss-${courseCount}" name="rss[]" placeholder="https://eclass.gr/modules/announcements/rss.php?..." required>
-            <label for="course-${courseCount}">Course Name</label>
-            <input type="text" id="course-${courseCount}" name="course[]" placeholder="Course Name" required>
-            <button type="button" class="remove-course" style="margin-bottom:1rem;">Αφαίρεση</button>
-        `;
-        coursesList.appendChild(div);
-
-        div.querySelector('.remove-course').onclick = function() {
-            div.remove();
-        };
-    });
-
+    const form = document.querySelector('form');
     form.addEventListener('submit', function(e) {
         e.preventDefault();
 
+        const universitySelect = document.getElementById('university');
         const universityUrl = universitySelect.value;
-        // Use stenography code for filename if available, else fallback to sanitized name
         let filename = (universityCodes[universityUrl] || universitySelect.options[universitySelect.selectedIndex].text
             .replace(/[()]/g, '')
             .replace(/Πανεπιστήμιο\s+/, '')
