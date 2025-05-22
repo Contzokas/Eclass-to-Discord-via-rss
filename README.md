@@ -1,6 +1,6 @@
 # Eclass-to-Discord-via-rss
 
-[🇬🇷 Ελληνικά](#ελληνικά) | [🇺🇸 English](#english)
+[🇺🇸 English](#english) | [🇬🇷 Ελληνικά](#ελληνικά)
 
 ---
 
