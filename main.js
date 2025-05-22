@@ -71,6 +71,16 @@ window.addEventListener('DOMContentLoaded', function() {
 
         const universityUrl = universitySelect.value;
         const universityName = universitySelect.options[universitySelect.selectedIndex].text;
+
+        // Use the university name as the filename (remove special chars, spaces, etc.)
+        let filename = universityName
+            .replace(/[()]/g, '') // remove parentheses
+            .replace(/Πανεπιστήμιο\s+/, '') // remove "Πανεπιστήμιο "
+            .replace(/[^a-zA-Zα-ωΑ-Ω0-9]+/g, '_') // replace non-alphanum with _
+            .replace(/_+/g, '_') // collapse underscores
+            .replace(/^_|_$/g, '') // trim underscores
+            .toLowerCase() + '.py';
+
         const webhook = document.getElementById('webhook').value;
 
         // Collect all courses
@@ -82,15 +92,6 @@ window.addEventListener('DOMContentLoaded', function() {
                 rssFeeds.push({name: courseInputs[i].value, url: rssInputs[i].value});
             }
         }
-
-        // Generate filename (e.g. uth.py)
-        let filename = universityName
-            .replace(/[()]/g, '') // remove parentheses
-            .replace(/Πανεπιστήμιο\s+/, '') // remove "Πανεπιστήμιο "
-            .replace(/[^a-zA-Zα-ωΑ-Ω0-9]+/g, '_') // replace non-alphanum with _
-            .replace(/_+/g, '_') // collapse underscores
-            .replace(/^_|_$/g, '') // trim underscores
-            .toLowerCase() + '.py';
 
         // Build RSS_FEEDS dict
         let feedsStr = rssFeeds.map(f => `    "${f.name}": "${f.url}"`).join(',\n');
