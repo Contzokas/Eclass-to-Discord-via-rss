@@ -1,7 +1,7 @@
 # Eclass-to-Discord-via-rss
 
 <p align="center">
-  <img src="logo.png" alt="Eclass to Discord Logo" width="120">
+  <img src="Logo.png" alt="Eclass to Discord Logo" width="120">
 </p>
 
 [🇬🇷 Ελληνικά](#ελληνικά) | [🇺🇸 English](#english)
