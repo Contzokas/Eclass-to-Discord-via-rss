@@ -36,6 +36,37 @@ window.addEventListener('DOMContentLoaded', function() {
         "https://eclass.pirate.edu.gr/": "https://www.unipi.gr/unipi/images/unipi_logo.png"
     };
 
+    // Map university URLs to their stenography codes
+    const universityCodes = {
+        "https://eclass.uth.gr/": "uth",
+        "https://eclass.uoa.gr/": "uoa",
+        "https://eclass.auth.gr/": "auth",
+        "https://eclass.upatras.gr/": "upatras",
+        "https://eclass.aegean.gr/": "aegean",
+        "https://eclass.duth.gr/": "duth",
+        "https://eclass.ionio.gr/": "ionio",
+        "https://eclass.uoi.gr/": "uoi",
+        "https://eclass.teiath.gr/": "teiath",
+        "https://eclass.teiwest.gr/": "teiwest",
+        "https://eclass.teilar.gr/": "teilar",
+        "https://eclass.teiep.gr/": "teiep",
+        "https://eclass.teicrete.gr/": "teicrete",
+        "https://eclass.teikal.gr/": "teikal",
+        "https://eclass.teithe.gr/": "teithess",
+        "https://eclass.teiser.gr/": "teiser",
+        "https://eclass.teikoz.gr/": "teikoz",
+        "https://eclass.hua.gr/": "hua",
+        "https://eclass.panteion.gr/": "panteion",
+        "https://eclass.ntua.gr/": "ntua",
+        "https://eclass.ihu.gr/": "ihu",
+        "https://eclass.uop.gr/": "uop",
+        "https://eclass.uowm.gr/": "uowm",
+        "https://eclass.uniwa.gr/": "uniwa",
+        "https://eclass.eap.gr/": "eap",
+        "https://eclass.aueb.gr/": "aueb",
+        "https://eclass.pirate.edu.gr/": "unipi"
+    };
+
     function toggleDetails() {
         if (universitySelect.value === "") {
             detailsDiv.style.display = "none";
@@ -70,16 +101,14 @@ window.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
 
         const universityUrl = universitySelect.value;
-        const universityName = universitySelect.options[universitySelect.selectedIndex].text;
-
-        // Use the university name as the filename (remove special chars, spaces, etc.)
-        let filename = universityName
-            .replace(/[()]/g, '') // remove parentheses
-            .replace(/Πανεπιστήμιο\s+/, '') // remove "Πανεπιστήμιο "
-            .replace(/[^a-zA-Zα-ωΑ-Ω0-9]+/g, '_') // replace non-alphanum with _
-            .replace(/_+/g, '_') // collapse underscores
-            .replace(/^_|_$/g, '') // trim underscores
-            .toLowerCase() + '.py';
+        // Use stenography code for filename if available, else fallback to sanitized name
+        let filename = (universityCodes[universityUrl] || universitySelect.options[universitySelect.selectedIndex].text
+            .replace(/[()]/g, '')
+            .replace(/Πανεπιστήμιο\s+/, '')
+            .replace(/[^a-zA-Zα-ωΑ-Ω0-9]+/g, '_')
+            .replace(/_+/g, '_')
+            .replace(/^_|_$/g, '')
+            .toLowerCase()) + '.py';
 
         const webhook = document.getElementById('webhook').value;
 

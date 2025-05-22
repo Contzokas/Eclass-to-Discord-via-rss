@@ -1,6 +1,10 @@
 # Eclass-to-Discord-via-rss
 
-[🇺🇸 English](#english) | [🇬🇷 Ελληνικά](#ελληνικά)
+<p align="center">
+  <img src="logo.png" alt="Eclass to Discord Logo" width="120">
+</p>
+
+[🇬🇷 Ελληνικά](#ελληνικά) | [🇺🇸 English](#english)
 
 ---
 
@@ -103,7 +107,6 @@ MIT License
 
 ---
 
----
 ## <a name="ελληνικά"></a>
 ## 🇬🇷 Ελληνικά
 
